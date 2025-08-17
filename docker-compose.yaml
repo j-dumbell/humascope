@@ -1,0 +1,14 @@
+services:
+  pyroscope:
+    image: pyroscope/pyroscope:latest
+    container_name: pyroscope
+    ports:
+      - "4040:4040" # Web UI
+    volumes:
+      - pyroscope-data:/var/lib/pyroscope
+    command:
+      - server
+    restart: unless-stopped
+
+volumes:
+  pyroscope-data:

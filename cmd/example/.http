@@ -1,0 +1,11 @@
+### GET /greeting/{name}
+GET http://localhost:8888/greeting/blah
+
+### POST /reviews
+POST http://localhost:8888/reviews
+Content-Type: application/json
+
+{
+  "author": "foo",
+  "rating": 1
+}
