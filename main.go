@@ -2,7 +2,6 @@ package humascope
 
 import (
 	"context"
-	"runtime/pprof"
 
 	"github.com/danielgtaylor/huma/v2"
 	"github.com/grafana/pyroscope-go"
@@ -12,7 +11,7 @@ import (
 // The labels should be provided as-per pprof.Labels.
 func NewPyroscopeMW(labels ...string) func(huma.Context, func(huma.Context)) {
 	return func(ctx huma.Context, next func(huma.Context)) {
-		pyroscope.TagWrapper(ctx.Context(), pprof.Labels(labels...), func(_ context.Context) {
+		pyroscope.TagWrapper(ctx.Context(), pyroscope.Labels(labels...), func(_ context.Context) {
 			next(ctx)
 		})
 	}
